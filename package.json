@@ -9,6 +9,7 @@
     "dev": "tsc --watch"
   },
   "dependencies": {
+    "@veloxtx/gaming-sdk": "github:marcolub/veloxtx-gaming-sdk",
     "axios": "^1.7.2"
   },
   "devDependencies": {
