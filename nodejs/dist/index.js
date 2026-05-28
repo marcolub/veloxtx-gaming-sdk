@@ -21,28 +21,28 @@ class VeloxTx {
     }
     // ==================== TRANSACTIONS ====================
     async transfer(params) {
-        const { data } = await this.client.post('/transactions/transfer', params);
+        const { data } = await this.client.post('transactions/transfer', params);
         return data;
     }
     async spend(params) {
-        const { data } = await this.client.post('/transactions/spend', params);
+        const { data } = await this.client.post('transactions/spend', params);
         return data;
     }
     async add(params) {
-        const { data } = await this.client.post('/transactions/add', params);
+        const { data } = await this.client.post('transactions/add', params);
         return data;
     }
     async batch(params) {
-        const { data } = await this.client.post('/transactions/batch', params);
+        const { data } = await this.client.post('transactions/batch', params);
         return data;
     }
     // ==================== BALANCE ====================
     /**
-     * Recupera il balance completo di un giocatore
+     * Retrieves the complete balance of a player
      */
     async getBalance(userId) {
         try {
-            const { data } = await this.client.get(`/transactions/balance/${userId}`);
+            const { data } = await this.client.get(`transactions/balance/${userId}`);
             return data.data || {};
         }
         catch (err) {
@@ -51,11 +51,47 @@ class VeloxTx {
         }
     }
     /**
-     * Recupera solo una valuta specifica
+     * Retrieves only a specific currency
      */
     async getBalanceByCurrency(userId, currency) {
         const balance = await this.getBalance(userId);
         return balance[currency] || 0;
+    }
+    // ==================== PAYMENT ====================
+    async createPayment(params) {
+        const { data } = await this.client.post('transactions/webhook/stripe', params);
+        return data;
+    }
+    // ==================== ACTIONS ====================
+    async loot(params) {
+        const { data } = await this.client.post('actions/loot', params);
+        return data;
+    }
+    async market(params) {
+        const { data } = await this.client.post('actions/market', params);
+        return data;
+    }
+    async craft(params) {
+        const { data } = await this.client.post('actions/craft', params);
+        return data;
+    }
+    async stamina(params) {
+        const { data } = await this.client.post('actions/stamina', params);
+        return data;
+    }
+    // ==================== TELEMETRY ====================
+    async telemetry(params) {
+        const { data } = await this.client.post('actions/telemetry', params);
+        return data;
+    }
+    async setClickData(params) {
+        const { data } = await this.client.post('actions/set-click-data', params);
+        return data;
+    }
+    // ==================== LEDGER ====================
+    async getUserLedgerHistory(userId) {
+        const { data } = await this.client.get(`actions/ledger/${userId}`);
+        return data;
     }
 }
 exports.VeloxTx = VeloxTx;
