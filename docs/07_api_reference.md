@@ -32,16 +32,17 @@ URL: /api/v1/actions/loot
 
 Method: POST
 
-Body: {"userId": "string", "boxId": "string"}
-
+Body:
+```json 
+{"userId": "string", "boxId": "string"}
+```
 Buy Market Item (P2P_MARKET_EXECUTE)
 URL: /api/v1/actions/market/buy
 
 Method: POST
 
 Body:
-
-JSON
+```json
 {
   "buyerId": "string",
   "listingId": "string",
@@ -49,19 +50,25 @@ JSON
   "itemId": "string",
   "price": 5000
 }
+```
 Craft Item (CRAFT_ITEM)
 URL: /api/v1/actions/craft
 
 Method: POST
 
-Body: {"userId": "string", "recipeId": "string"}
-
+Body: 
+```json
+{"userId": "string", "recipeId": "string"}
+```
 Consume Stamina (CONSUME_STAMINA)
 URL: /api/v1/actions/dungeon/enter
 
 Method: POST
 
-Body: {"userId": "string", "activityId": "string", "clientFps": 60, "lastClickTimestamp": 1716410425000}
+Body: 
+```json 
+{"userId": "string", "activityId": "string", "clientFps": 60, "lastClickTimestamp": 1716410425000}
+```
 
 Fetch Ledger History
 URL: /api/v1/actions/ledger/:userId

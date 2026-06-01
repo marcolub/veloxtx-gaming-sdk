@@ -50,3 +50,8 @@ Tested under high concurrency stress using **Autocannon** (50 concurrent connect
 ```bash
 npm install veloxtx-gaming-sdk
 ```
+or from GitHub:
+
+```bash
+npm install marcolub/veloxtx-gaming-sdk
+```

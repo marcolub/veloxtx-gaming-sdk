@@ -8,16 +8,21 @@ const axios_1 = __importDefault(require("axios"));
 class VeloxTx {
     client;
     constructor(config) {
-        this.client = axios_1.default.create({
-            baseURL: config.baseURL.endsWith('/api/v1')
-                ? config.baseURL
-                : `${config.baseURL}/api/v1`,
-            timeout: config.timeout || 10000,
-            headers: {
-                'Content-Type': 'application/json',
-                ...(config.apiKey && { 'Authorization': `Bearer ${config.apiKey}` })
-            }
-        });
+        {
+            config.baseURL ?? 'http://159.89.200.77:3000';
+            this.client =
+                axios_1.default.create({
+                    baseURL: config.baseURL.endsWith('/api/v1')
+                        ? config.baseURL
+                        : `${config.baseURL}/api/v1`,
+                    timeout: config.timeout || 10000,
+                    headers: {
+                        'Content-Type': 'application/json',
+                        ...(config.apiKey && { 'Authorization': `Bearer ${config.apiKey}` })
+                    }
+                })
+        }
+
     }
     // ==================== TRANSACTIONS ====================
     async transfer(params) {
